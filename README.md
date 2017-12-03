@@ -39,6 +39,7 @@ class MyUndoableEdit extends UndoableEdit {
 	}
 }
 
+const manager = new UndoManager();
 // fixme: examples
 ```
 
