@@ -1,6 +1,6 @@
 ![](https://lusito.github.io/typed-undomanager/typed_undomanager.png)
 
-[![License](https://img.shields.io/badge/License-CC0%20Public%20Domain-blue.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![License](https://img.shields.io/badge/License-zlib/libpng-blue.svg)](https://github.com/Lusito/typed-undomanager/blob/master/LICENSE)
 
 |Master|[![Build Status](https://travis-ci.org/Lusito/typed-undomanager.svg?branch=master)](https://travis-ci.org/Lusito/typed-undomanager)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undomanager/badge.svg?branch=master)](https://coveralls.io/github/Lusito/typed-undomanager)|
 |---|---|---|
