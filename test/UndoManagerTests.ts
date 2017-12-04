@@ -1,7 +1,7 @@
 /**
  * License: zlib/libpng
  * @author Santo Pfingsten
- * @see https://github.com/Lusito/typed-undomanager
+ * @see https://github.com/Lusito/typed-undo
  */
 
 import { suite, test } from "mocha-typescript";

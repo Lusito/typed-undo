@@ -1,5 +1,5 @@
 {
-  "name": "typed-undomanager",
+  "name": "typed-undo",
   "version": "0.8.0",
   "description": "A low memory UndoManager for TypeScript (and JavaScript)",
   "keywords": [
@@ -9,13 +9,13 @@
   ],
   "author": "Santo Pfingsten",
   "license": "Zlib",
-  "homepage": "https://github.com/Lusito/typed-undomanager",
+  "homepage": "https://github.com/Lusito/typed-undo",
   "bugs": {
-    "url": "https://github.com/Lusito/typed-undomanager/issues"
+    "url": "https://github.com/Lusito/typed-undo/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lusito/typed-undomanager.git"
+    "url": "https://github.com/Lusito/typed-undo.git"
   },
   "files": [
     "dist/",
