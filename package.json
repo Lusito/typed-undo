@@ -37,6 +37,7 @@
       ".tsx"
     ],
     "exclude": [
+      "docs/**/*",
       "coverage/**/*",
       "test/**/*",
       "dist/test/**/*",
