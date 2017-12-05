@@ -438,10 +438,6 @@ class UndoableMerge extends UndoableSpy {
 		assert.isTrue(manager.isModified());
 	}
 
-	//fixme: save marker scenario:
-	// do change (is significant), save, do change which merges,
-	// making current change insignificant => should say modified, but is unmodified
-
 	//Fixme: replace
 	//Fixme: listener
 }
