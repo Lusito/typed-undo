@@ -63,34 +63,34 @@ class UndoableValueChange extends UndoableEdit {
 
 const manager = new UndoManager();
 manager.setListener(()=> {
-	console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
-	console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
-	console.log((manager.isModified() ? "enable" : "disable") + " the save button");
+    console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
+    console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
+    console.log((manager.isModified() ? "enable" : "disable") + " the save button");
 });
 const applyValue = (value:string)=> console.log(`Value changed to "${value}"`);
 const example = "basic";
 if(example === "basic") {
-	applyValue("Foo Bar"); // Value changed to "Foo Bar"
-	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-	manager.undo(); // Value changed to "Hello World"
-	manager.redo(); // Value changed to "Foo Bar"
+    applyValue("Foo Bar"); // Value changed to "Foo Bar"
+    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+    manager.undo(); // Value changed to "Hello World"
+    manager.redo(); // Value changed to "Foo Bar"
 } else if(example === "merge") {
-	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-	console.log(manager.canUndo()); // true
-	console.log(manager.isModified()); // true
-	manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
-	console.log(manager.canUndo()); // false
-	console.log(manager.isModified()); // false
+    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+    console.log(manager.canUndo()); // true
+    console.log(manager.isModified()); // true
+    manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
+    console.log(manager.canUndo()); // false
+    console.log(manager.isModified()); // false
 } else if(example === "modified") {
-	console.log(manager.isModified()); // false
-	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-	console.log(manager.isModified()); // true
-	manager.setUnmodified();
-	console.log(manager.isModified()); // false
-	manager.undo();
-	console.log(manager.isModified()); // true
-	manager.redo();
-	console.log(manager.isModified()); // false
+    console.log(manager.isModified()); // false
+    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+    console.log(manager.isModified()); // true
+    manager.setUnmodified();
+    console.log(manager.isModified()); // false
+    manager.undo();
+    console.log(manager.isModified()); // true
+    manager.redo();
+    console.log(manager.isModified()); // false
 }
 ```
 
