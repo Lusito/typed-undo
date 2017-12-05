@@ -15,7 +15,7 @@ An UndoManager for TypeScript (and JavaScript). The basic idea is based on the U
 - You can mark a save-point, to enable/disable your save-button.
 - Undo/Redo non-edit related changes, like focus change, without it being marked as needs-to-be-saved.
 - No dependencies
-- Automated [unit tests](https://travis-ci.org/Lusito/typed-undo)  with 100% [code coverage](https://coveralls.io/github/Lusito/typed-undo)
+- Automated [unit tests](https://travis-ci.org/Lusito/typed-undo) with 100% [code coverage](https://coveralls.io/github/Lusito/typed-undo)
 - Liberal license: [zlib/libpng](https://github.com/Lusito/typed-undo/blob/master/LICENSE)
 - [Fully documented](https://lusito.github.io/typed-undo/index.html) using TypeDoc
 
@@ -23,24 +23,75 @@ An UndoManager for TypeScript (and JavaScript). The basic idea is based on the U
 
 ```npm install typed-undo --save```
 
-### Basics
+### Example
 
 ```typescript
 import { UndoManager, UndoableEdit } from "typed-undo";
 
-class MyUndoableEdit extends UndoableEdit {
+class UndoableValueChange extends UndoableEdit {
     private readonly oldValue: string;
     private newValue: string;
+    private readonly applyValue: (value: string) => void;
 
-	public undo(): void {
-	}
+    public constructor(oldValue: string, newValue: string, applyValue: (value: string) => void) {
+        super();
+        this.oldValue = oldValue;
+        this.newValue = newValue;
+        this.applyValue = applyValue;
+    }
 
-	public redo(): void {
-	}
+    public undo(): void {
+        this.applyValue(this.oldValue);
+    }
+
+    public redo(): void {
+        this.applyValue(this.newValue);
+    }
+
+    public isSignificant(): boolean {
+        return this.oldValue !== this.newValue;
+    }
+
+    public merge(edit: UndoableEdit): boolean {
+        if (edit instanceof UndoableValueChange) {
+            this.newValue = edit.newValue;
+            return true;
+        }
+        return false;
+    }
 }
 
 const manager = new UndoManager();
-// fixme: examples
+manager.setListener(()=> {
+	console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
+	console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
+	console.log((manager.isModified() ? "enable" : "disable") + " the save button");
+});
+const applyValue = (value:string)=> console.log(`Value changed to "${value}"`);
+const example = "basic";
+if(example === "basic") {
+	applyValue("Foo Bar"); // Value changed to "Foo Bar"
+	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+	manager.undo(); // Value changed to "Hello World"
+	manager.redo(); // Value changed to "Foo Bar"
+} else if(example === "merge") {
+	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+	console.log(manager.canUndo()); // true
+	console.log(manager.isModified()); // true
+	manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
+	console.log(manager.canUndo()); // false
+	console.log(manager.isModified()); // false
+} else if(example === "modified") {
+	console.log(manager.isModified()); // false
+	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+	console.log(manager.isModified()); // true
+	manager.setUnmodified();
+	console.log(manager.isModified()); // false
+	manager.undo();
+	console.log(manager.isModified()); // true
+	manager.redo();
+	console.log(manager.isModified()); // false
+}
 ```
 
 ### Report isssues
