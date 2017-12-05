@@ -32,6 +32,14 @@ class UndoableMergeSpy extends UndoableSpy {
 	}
 }
 
+class UndoableReplaceSpy extends UndoableSpy {
+	public replaceCalls = 0;
+	public replace(edit: UndoableEdit): boolean {
+		this.replaceCalls++;
+		return edit instanceof UndoableReplaceSpy;
+	}
+}
+
 class UndoableInsignificantSpy extends UndoableSpy {
 	public isSignificant(): boolean {
 		return false;
@@ -273,7 +281,58 @@ class UndoableMerge extends UndoableSpy {
 		assert.equal(undoable3.redoneCount, 1);
 	}
 
-	//Fixme: set limits after adding undoables
+	@test limit_after_add() {
+		const manager = new UndoManager();
+		const undoable1 = new UndoableSpy();
+		const undoable2 = new UndoableSpy();
+		const undoable3 = new UndoableSpy();
+		manager.add(undoable1);
+		manager.add(undoable2);
+		manager.add(undoable3);
+		manager.setLimit(2);
+		assert.equal(manager.getLimit(), 2);
+		assert.isTrue(manager.canUndo());
+		assert.isFalse(manager.canRedo());
+		manager.undo();
+		assert.equal(undoable1.undoneCount, 0);
+		assert.equal(undoable1.redoneCount, 0);
+		assert.equal(undoable2.undoneCount, 0);
+		assert.equal(undoable2.redoneCount, 0);
+		assert.equal(undoable3.undoneCount, 1);
+		assert.equal(undoable3.redoneCount, 0);
+		assert.isTrue(manager.canUndo());
+		assert.isTrue(manager.canRedo());
+		manager.undo();
+		assert.equal(undoable1.undoneCount, 0);
+		assert.equal(undoable1.redoneCount, 0);
+		assert.equal(undoable2.undoneCount, 1);
+		assert.equal(undoable2.redoneCount, 0);
+		assert.equal(undoable3.undoneCount, 1);
+		assert.equal(undoable3.redoneCount, 0);
+		assert.isFalse(manager.canUndo());
+		assert.isTrue(manager.canRedo());
+	}
+
+	@test limit_after_add_save_marker_gone() {
+		const manager = new UndoManager();
+		assert.isFalse(manager.isModified());
+		manager.add(new UndoableSpy());
+		manager.add(new UndoableSpy());
+		manager.add(new UndoableSpy());
+		manager.setUnmodified();
+		manager.undo();
+		manager.add(new UndoableSpy());
+		manager.setLimit(2);
+		assert.isTrue(manager.isModified());
+		while(manager.canUndo()) {
+			manager.undo();
+			assert.isTrue(manager.isModified());
+		}
+		while(manager.canRedo()) {
+			manager.redo();
+			assert.isTrue(manager.isModified());
+		}
+	}
 
 	@test errors() {
 		const manager = new UndoManager();
@@ -387,6 +446,27 @@ class UndoableMerge extends UndoableSpy {
 		assert.isFalse(manager.isModified());
 	}
 
+	@test save_marker_gone() {
+		const manager = new UndoManager();
+		assert.isFalse(manager.isModified());
+		manager.add(new UndoableSpy());
+		manager.add(new UndoableSpy());
+		manager.setUnmodified();
+		assert.isFalse(manager.isModified());
+		manager.undo();
+		assert.isTrue(manager.isModified());
+		manager.add(new UndoableSpy());
+		assert.isTrue(manager.isModified());
+		while(manager.canUndo()) {
+			manager.undo();
+			assert.isTrue(manager.isModified());
+		}
+		while(manager.canRedo()) {
+			manager.redo();
+			assert.isTrue(manager.isModified());
+		}
+	}
+
 	@test save_marker_insignificant() {
 		const manager = new UndoManager();
 		const undoable1 = new UndoableSpy();
@@ -438,6 +518,56 @@ class UndoableMerge extends UndoableSpy {
 		assert.isTrue(manager.isModified());
 	}
 
-	//Fixme: replace
-	//Fixme: listener
+	@test replace() {
+		const manager = new UndoManager();
+		const undoable1 = new UndoableReplaceSpy();
+		const undoable2 = new UndoableReplaceSpy();
+		manager.add(undoable1);
+		manager.add(undoable2);
+		assert.isTrue(manager.canUndo());
+		assert.isFalse(manager.canRedo());
+		manager.undo();
+		assert.equal(undoable1.undoneCount, 0);
+		assert.equal(undoable1.redoneCount, 0);
+		assert.equal(undoable2.undoneCount, 1);
+		assert.equal(undoable2.redoneCount, 0);
+		assert.isFalse(manager.canUndo());
+		assert.isTrue(manager.canRedo());
+		manager.redo();
+		assert.equal(undoable1.undoneCount, 0);
+		assert.equal(undoable1.redoneCount, 0);
+		assert.equal(undoable2.undoneCount, 1);
+		assert.equal(undoable2.redoneCount, 1);
+		assert.isTrue(manager.canUndo());
+		assert.isFalse(manager.canRedo());
+	}
+
+	@test listener() {
+		let count = 0;
+		const manager = new UndoManager();
+		manager.setListener(() => count++);
+		assert.equal(count, 0);
+		manager.add(new UndoableSpy());
+		assert.equal(count, 1);
+		manager.undo();
+		assert.equal(count, 2);
+		manager.redo();
+		assert.equal(count, 3);
+		manager.clear();
+		assert.equal(count, 4);
+
+		manager.add(new UndoableSpy());
+		assert.equal(count, 5);
+		manager.add(new UndoableInsignificantSpy());
+		assert.equal(count, 6);
+		manager.add(new UndoableInsignificantSpy());
+		assert.equal(count, 7);
+		manager.add(new UndoableSpy());
+		assert.equal(count, 8);
+		manager.undo();
+		assert.equal(count, 9);
+		manager.undo();
+		assert.equal(count, 10);
+		assert.isFalse(manager.canUndo());
+	}
 }

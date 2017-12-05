@@ -83,6 +83,8 @@ export class UndoManager {
      * Test if there is anything to be saved
      */
     public isModified() {
+        if (this.unmodifiedPosition === -1)
+            return true;
         if (this.position === this.unmodifiedPosition)
             return false;
         if (this.edits.length <= this.unmodifiedPosition)
@@ -132,7 +134,9 @@ export class UndoManager {
     private applyLimit(limit: number) {
         let diff = this.edits.length - limit
         if (diff > 0) {
-            // fixme: correct unmodifiedPosition and add tests for it
+            this.position = Math.max(0, this.position - diff);
+            if(this.unmodifiedPosition !== -1)
+                this.unmodifiedPosition = Math.max(0, this.unmodifiedPosition - diff);
             this.edits.splice(0, diff);
         }
     }
@@ -240,6 +244,8 @@ export class UndoManager {
 
         this.applyLimit(this.limit);
         this.position = this.edits.length;
+        if(this.unmodifiedPosition >= this.position)
+            this.unmodifiedPosition = -1;
         if (this.listener)
             this.listener();
     }
