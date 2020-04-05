@@ -1,12 +1,19 @@
 ![](https://lusito.github.io/typed-undo/typed_undo.png)
 
-[![License](https://img.shields.io/badge/License-zlib/libpng-blue.svg)](https://github.com/Lusito/typed-undo/blob/master/LICENSE)
+[![Minified + gzipped size](https://badgen.net/bundlephobia/minzip/typed-undo)](https://www.npmjs.com/package/typed-undo)
+[![NPM version](https://badgen.net/npm/v/typed-undo)](https://www.npmjs.com/package/typed-undo)
+[![License](https://badgen.net/github/license/lusito/typed-undo)](https://github.com/lusito/typed-undo/blob/master/LICENSE)
+[![Stars](https://badgen.net/github/stars/lusito/typed-undo)](https://github.com/lusito/typed-undo)
+[![Watchers](https://badgen.net/github/watchers/lusito/typed-undo)](https://github.com/lusito/typed-undo)
 
 |Master|[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=master)](https://travis-ci.org/Lusito/typed-undo)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=master)](https://coveralls.io/github/Lusito/typed-undo)|
 |---|---|---|
 |Develop|[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=develop)](https://travis-ci.org/Lusito/typed-undo)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=develop)](https://coveralls.io/github/Lusito/typed-undo)|
 
 An UndoManager for TypeScript (and JavaScript). The basic idea is based on the UndoManager from Java.
+
+#### Fair Warning
+With version 2, the target is now es2015, so if you want to support older browser, you'll have to ensure that this module is being transpiled to an older es version during your build-process.
 
 ### Why Typed-Undo?
 
@@ -63,34 +70,34 @@ class UndoableValueChange extends UndoableEdit {
 
 const manager = new UndoManager();
 manager.setListener(()=> {
-	console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
-	console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
-	console.log((manager.isModified() ? "enable" : "disable") + " the save button");
+    console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
+    console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
+    console.log((manager.isModified() ? "enable" : "disable") + " the save button");
 });
 const applyValue = (value:string)=> console.log(`Value changed to "${value}"`);
 const example = "basic";
 if(example === "basic") {
-	applyValue("Foo Bar"); // Value changed to "Foo Bar"
-	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-	manager.undo(); // Value changed to "Hello World"
-	manager.redo(); // Value changed to "Foo Bar"
+    applyValue("Foo Bar"); // Value changed to "Foo Bar"
+    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+    manager.undo(); // Value changed to "Hello World"
+    manager.redo(); // Value changed to "Foo Bar"
 } else if(example === "merge") {
-	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-	console.log(manager.canUndo()); // true
-	console.log(manager.isModified()); // true
-	manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
-	console.log(manager.canUndo()); // false
-	console.log(manager.isModified()); // false
+    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+    console.log(manager.canUndo()); // true
+    console.log(manager.isModified()); // true
+    manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
+    console.log(manager.canUndo()); // false
+    console.log(manager.isModified()); // false
 } else if(example === "modified") {
-	console.log(manager.isModified()); // false
-	manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-	console.log(manager.isModified()); // true
-	manager.setUnmodified();
-	console.log(manager.isModified()); // false
-	manager.undo();
-	console.log(manager.isModified()); // true
-	manager.redo();
-	console.log(manager.isModified()); // false
+    console.log(manager.isModified()); // false
+    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+    console.log(manager.isModified()); // true
+    manager.setUnmodified();
+    console.log(manager.isModified()); // false
+    manager.undo();
+    console.log(manager.isModified()); // true
+    manager.redo();
+    console.log(manager.isModified()); // false
 }
 ```
 
