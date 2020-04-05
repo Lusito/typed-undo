@@ -1,12 +1,19 @@
 ![](https://lusito.github.io/typed-undo/typed_undo.png)
 
-[![License](https://img.shields.io/badge/License-zlib/libpng-blue.svg)](https://github.com/Lusito/typed-undo/blob/master/LICENSE)
+[![Minified + gzipped size](https://badgen.net/bundlephobia/minzip/typed-undo)](https://www.npmjs.com/package/typed-undo)
+[![NPM version](https://badgen.net/npm/v/typed-undo)](https://www.npmjs.com/package/typed-undo)
+[![License](https://badgen.net/github/license/lusito/typed-undo)](https://github.com/lusito/typed-undo/blob/master/LICENSE)
+[![Stars](https://badgen.net/github/stars/lusito/typed-undo)](https://github.com/lusito/typed-undo)
+[![Watchers](https://badgen.net/github/watchers/lusito/typed-undo)](https://github.com/lusito/typed-undo)
 
 |Master|[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=master)](https://travis-ci.org/Lusito/typed-undo)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=master)](https://coveralls.io/github/Lusito/typed-undo)|
 |---|---|---|
 |Develop|[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=develop)](https://travis-ci.org/Lusito/typed-undo)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=develop)](https://coveralls.io/github/Lusito/typed-undo)|
 
 An UndoManager for TypeScript (and JavaScript). The basic idea is based on the UndoManager from Java.
+
+#### Fair Warning
+With version 2, the target is now es2015, so if you want to support older browser, you'll have to ensure that this module is being transpiled to an older es version during your build-process.
 
 ### Why Typed-Undo?
 
