@@ -1,6 +1,6 @@
 {
   "name": "typed-undo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A low memory UndoManager for TypeScript (and JavaScript)",
   "keywords": [
     "TypeScript",
