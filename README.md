@@ -5,10 +5,8 @@
 [![License](https://badgen.net/github/license/lusito/typed-undo)](https://github.com/lusito/typed-undo/blob/master/LICENSE)
 [![Stars](https://badgen.net/github/stars/lusito/typed-undo)](https://github.com/lusito/typed-undo)
 [![Watchers](https://badgen.net/github/watchers/lusito/typed-undo)](https://github.com/lusito/typed-undo)
-
-|Master|[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=master)](https://travis-ci.org/Lusito/typed-undo)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=master)](https://coveralls.io/github/Lusito/typed-undo)|
-|---|---|---|
-|Develop|[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=develop)](https://travis-ci.org/Lusito/typed-undo)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=develop)](https://coveralls.io/github/Lusito/typed-undo)|
+[![Build Status](https://travis-ci.org/Lusito/typed-undo.svg?branch=master)](https://travis-ci.org/Lusito/typed-undo)
+[![Code Coverage](https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=master)](https://coveralls.io/github/Lusito/typed-undo)
 
 An UndoManager for TypeScript (and JavaScript). The basic idea is based on the UndoManager from Java.
 
