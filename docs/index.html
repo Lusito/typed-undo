@@ -4,16 +4,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>typed-undo</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for typed-undo">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -49,11 +50,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>typed-undo</h1>
 		</div>
 	</div>
@@ -109,72 +105,73 @@
 				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
 					<h3>Example</h3>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { UndoManager, UndoableEdit } <span class="hljs-keyword">from</span> <span class="hljs-string">"typed-undo"</span>;
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">UndoManager</span><span style="color: #000000">, </span><span style="color: #001080">UndoableEdit</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;typed-undo&quot;</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">class</span> UndoableValueChange <span class="hljs-keyword">extends</span> UndoableEdit {
-    <span class="hljs-keyword">private</span> readonly oldValue: <span class="hljs-built_in">string</span>;
-    <span class="hljs-keyword">private</span> newValue: <span class="hljs-built_in">string</span>;
-    <span class="hljs-keyword">private</span> readonly applyValue: <span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>;
+<span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableEdit</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">private</span><span style="color: #000000"> </span><span style="color: #0000FF">readonly</span><span style="color: #000000"> </span><span style="color: #001080">oldValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">private</span><span style="color: #000000"> </span><span style="color: #001080">newValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">private</span><span style="color: #000000"> </span><span style="color: #0000FF">readonly</span><span style="color: #000000"> </span><span style="color: #795E26">applyValue</span><span style="color: #000000">: (</span><span style="color: #001080">value</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">void</span><span style="color: #000000">;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params">oldValue: <span class="hljs-built_in">string</span>, newValue: <span class="hljs-built_in">string</span>, applyValue: (value: <span class="hljs-built_in">string</span>) =&gt; <span class="hljs-built_in">void</span></span>) {
-        <span class="hljs-keyword">super</span>();
-        <span class="hljs-keyword">this</span>.oldValue = oldValue;
-        <span class="hljs-keyword">this</span>.newValue = newValue;
-        <span class="hljs-keyword">this</span>.applyValue = applyValue;
-    }
+<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #0000FF">constructor</span><span style="color: #000000">(</span><span style="color: #001080">oldValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">, </span><span style="color: #001080">newValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">, </span><span style="color: #795E26">applyValue</span><span style="color: #000000">: (</span><span style="color: #001080">value</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">void</span><span style="color: #000000">) {</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">super</span><span style="color: #000000">();</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">oldValue</span><span style="color: #000000"> = </span><span style="color: #001080">oldValue</span><span style="color: #000000">;</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000"> = </span><span style="color: #001080">newValue</span><span style="color: #000000">;</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">applyValue</span><span style="color: #000000"> = </span><span style="color: #001080">applyValue</span><span style="color: #000000">;</span>
+<span style="color: #000000">    }</span>
 
-    <span class="hljs-keyword">public</span> undo(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-keyword">this</span>.applyValue(<span class="hljs-keyword">this</span>.oldValue);
-    }
+<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">undo</span><span style="color: #000000">(): </span><span style="color: #267F99">void</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #795E26">applyValue</span><span style="color: #000000">(</span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">oldValue</span><span style="color: #000000">);</span>
+<span style="color: #000000">    }</span>
 
-    <span class="hljs-keyword">public</span> redo(): <span class="hljs-built_in">void</span> {
-        <span class="hljs-keyword">this</span>.applyValue(<span class="hljs-keyword">this</span>.newValue);
-    }
+<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">redo</span><span style="color: #000000">(): </span><span style="color: #267F99">void</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #795E26">applyValue</span><span style="color: #000000">(</span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000">);</span>
+<span style="color: #000000">    }</span>
 
-    <span class="hljs-keyword">public</span> isSignificant(): <span class="hljs-built_in">boolean</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.oldValue !== <span class="hljs-keyword">this</span>.newValue;
-    }
+<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">isSignificant</span><span style="color: #000000">(): </span><span style="color: #267F99">boolean</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">oldValue</span><span style="color: #000000"> !== </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000">;</span>
+<span style="color: #000000">    }</span>
 
-    <span class="hljs-keyword">public</span> merge(edit: UndoableEdit): <span class="hljs-built_in">boolean</span> {
-        <span class="hljs-keyword">if</span> (edit <span class="hljs-keyword">instanceof</span> UndoableValueChange) {
-            <span class="hljs-keyword">this</span>.newValue = edit.newValue;
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        }
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-    }
-}
+<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">merge</span><span style="color: #000000">(</span><span style="color: #001080">edit</span><span style="color: #000000">: </span><span style="color: #267F99">UndoableEdit</span><span style="color: #000000">): </span><span style="color: #267F99">boolean</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">edit</span><span style="color: #000000"> </span><span style="color: #0000FF">instanceof</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">) {</span>
+<span style="color: #000000">            </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000"> = </span><span style="color: #001080">edit</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000">;</span>
+<span style="color: #000000">            </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+<span style="color: #000000">        }</span>
+<span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">;</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">}</span>
 
-<span class="hljs-keyword">const</span> manager = <span class="hljs-keyword">new</span> UndoManager();
-manager.setListener(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> {
-    <span class="hljs-built_in">console</span>.log((manager.canUndo() ? <span class="hljs-string">"enable"</span> : <span class="hljs-string">"disable"</span>) + <span class="hljs-string">" the undo button"</span>);
-    <span class="hljs-built_in">console</span>.log((manager.canRedo() ? <span class="hljs-string">"enable"</span> : <span class="hljs-string">"disable"</span>) + <span class="hljs-string">" the redo button"</span>);
-    <span class="hljs-built_in">console</span>.log((manager.isModified() ? <span class="hljs-string">"enable"</span> : <span class="hljs-string">"disable"</span>) + <span class="hljs-string">" the save button"</span>);
-});
-<span class="hljs-keyword">const</span> applyValue = <span class="hljs-function">(<span class="hljs-params">value:<span class="hljs-built_in">string</span></span>)=&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Value changed to "<span class="hljs-subst">${value}</span>"`</span>);
-<span class="hljs-keyword">const</span> example = <span class="hljs-string">"basic"</span>;
-<span class="hljs-keyword">if</span>(example === <span class="hljs-string">"basic"</span>) {
-    applyValue(<span class="hljs-string">"Foo Bar"</span>); <span class="hljs-comment">// Value changed to "Foo Bar"</span>
-    manager.add(<span class="hljs-keyword">new</span> UndoableValueChange(<span class="hljs-string">"Hello World"</span>, <span class="hljs-string">"Foo Bar"</span>, applyValue));
-    manager.undo(); <span class="hljs-comment">// Value changed to "Hello World"</span>
-    manager.redo(); <span class="hljs-comment">// Value changed to "Foo Bar"</span>
-} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(example === <span class="hljs-string">"merge"</span>) {
-    manager.add(<span class="hljs-keyword">new</span> UndoableValueChange(<span class="hljs-string">"Hello World"</span>, <span class="hljs-string">"Foo Bar"</span>, applyValue));
-    <span class="hljs-built_in">console</span>.log(manager.canUndo()); <span class="hljs-comment">// true</span>
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// true</span>
-    manager.add(<span class="hljs-keyword">new</span> UndoableValueChange(<span class="hljs-string">"Foo Bar"</span>, <span class="hljs-string">"Hello World"</span>, applyValue));
-    <span class="hljs-built_in">console</span>.log(manager.canUndo()); <span class="hljs-comment">// false</span>
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// false</span>
-} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(example === <span class="hljs-string">"modified"</span>) {
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// false</span>
-    manager.add(<span class="hljs-keyword">new</span> UndoableValueChange(<span class="hljs-string">"Hello World"</span>, <span class="hljs-string">"Foo Bar"</span>, applyValue));
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// true</span>
-    manager.setUnmodified();
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// false</span>
-    manager.undo();
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// true</span>
-    manager.redo();
-    <span class="hljs-built_in">console</span>.log(manager.isModified()); <span class="hljs-comment">// false</span>
-}</code></pre>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">manager</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoManager</span><span style="color: #000000">();</span>
+<span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">setListener</span><span style="color: #000000">(()</span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">((</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canUndo</span><span style="color: #000000">() ? </span><span style="color: #A31515">&quot;enable&quot;</span><span style="color: #000000"> : </span><span style="color: #A31515">&quot;disable&quot;</span><span style="color: #000000">) + </span><span style="color: #A31515">&quot; the undo button&quot;</span><span style="color: #000000">);</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">((</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canRedo</span><span style="color: #000000">() ? </span><span style="color: #A31515">&quot;enable&quot;</span><span style="color: #000000"> : </span><span style="color: #A31515">&quot;disable&quot;</span><span style="color: #000000">) + </span><span style="color: #A31515">&quot; the redo button&quot;</span><span style="color: #000000">);</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">((</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">() ? </span><span style="color: #A31515">&quot;enable&quot;</span><span style="color: #000000"> : </span><span style="color: #A31515">&quot;disable&quot;</span><span style="color: #000000">) + </span><span style="color: #A31515">&quot; the save button&quot;</span><span style="color: #000000">);</span>
+<span style="color: #000000">});</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">applyValue</span><span style="color: #000000"> = (</span><span style="color: #001080">value</span><span style="color: #000000">:</span><span style="color: #267F99">string</span><span style="color: #000000">)</span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Value changed to &quot;</span><span style="color: #0000FF">${</span><span style="color: #001080">value</span><span style="color: #0000FF">}</span><span style="color: #A31515">&quot;`</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">example</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;basic&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">if</span><span style="color: #000000">(</span><span style="color: #001080">example</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;basic&quot;</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #795E26">applyValue</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// Value changed to &quot;Foo Bar&quot;</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">undo</span><span style="color: #000000">(); </span><span style="color: #008000">// Value changed to &quot;Hello World&quot;</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">redo</span><span style="color: #000000">(); </span><span style="color: #008000">// Value changed to &quot;Foo Bar&quot;</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">else</span><span style="color: #000000"> </span><span style="color: #AF00DB">if</span><span style="color: #000000">(</span><span style="color: #001080">example</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;merge&quot;</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canUndo</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canUndo</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">else</span><span style="color: #000000"> </span><span style="color: #AF00DB">if</span><span style="color: #000000">(</span><span style="color: #001080">example</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;modified&quot;</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">setUnmodified</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">undo</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
+<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">redo</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<a href="#report-isssues" id="report-isssues" style="color: inherit; text-decoration: none;">
 					<h3>Report isssues</h3>
 				</a>
@@ -193,17 +190,17 @@ manager.setListener(<span class="hljs-function"><span class="hljs-params">()</sp
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_undomanager_.html">&quot;<wbr>Undo<wbr>Manager&quot;</a>
+						<a href="modules/undomanager.html">Undo<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_undoableedit_.html">&quot;<wbr>Undoable<wbr>Edit&quot;</a>
+						<a href="modules/undoableedit.html">Undoable<wbr>Edit</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
+						<a href="modules/index.html">index</a>
 					</li>
 				</ul>
 			</nav>
@@ -229,6 +226,5 @@ manager.setListener(<span class="hljs-function"><span class="hljs-params">()</sp
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
