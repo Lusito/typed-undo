@@ -1,230 +1,58 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>typed-undo</title>
-	<meta name="description" content="Documentation for typed-undo">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">typed-undo</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>typed-undo</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<p><img src="https://lusito.github.io/typed-undo/typed_undo.png" alt=""></p>
-				<p><a href="https://www.npmjs.com/package/typed-undo"><img src="https://badgen.net/bundlephobia/minzip/typed-undo" alt="Minified + gzipped size"></a>
-					<a href="https://www.npmjs.com/package/typed-undo"><img src="https://badgen.net/npm/v/typed-undo" alt="NPM version"></a>
-					<a href="https://github.com/lusito/typed-undo/blob/master/LICENSE"><img src="https://badgen.net/github/license/lusito/typed-undo" alt="License"></a>
-					<a href="https://github.com/lusito/typed-undo"><img src="https://badgen.net/github/stars/lusito/typed-undo" alt="Stars"></a>
-				<a href="https://github.com/lusito/typed-undo"><img src="https://badgen.net/github/watchers/lusito/typed-undo" alt="Watchers"></a></p>
-				<table>
-					<thead>
-						<tr>
-							<th>Master</th>
-							<th><a href="https://travis-ci.org/Lusito/typed-undo"><img src="https://travis-ci.org/Lusito/typed-undo.svg?branch=master" alt="Build Status"></a></th>
-							<th><a href="https://coveralls.io/github/Lusito/typed-undo"><img src="https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=master" alt="Code Coverage"></a></th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>Develop</td>
-							<td><a href="https://travis-ci.org/Lusito/typed-undo"><img src="https://travis-ci.org/Lusito/typed-undo.svg?branch=develop" alt="Build Status"></a></td>
-							<td><a href="https://coveralls.io/github/Lusito/typed-undo"><img src="https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=develop" alt="Code Coverage"></a></td>
-						</tr>
-				</tbody></table>
-				<p>An UndoManager for TypeScript (and JavaScript). The basic idea is based on the UndoManager from Java.</p>
-				<a href="#fair-warning" id="fair-warning" style="color: inherit; text-decoration: none;">
-					<h4>Fair Warning</h4>
-				</a>
-				<p>With version 2, the target is now es2015, so if you want to support older browser, you&#39;ll have to ensure that this module is being transpiled to an older es version during your build-process.</p>
-				<a href="#why-typed-undo" id="why-typed-undo" style="color: inherit; text-decoration: none;">
-					<h3>Why Typed-Undo?</h3>
-				</a>
-				<ul>
-					<li>Easily add memory-efficient undo/redo functionality.<ul>
-							<li>You can merge and replace edits, just like in the Java UndoManager.</li>
-						</ul>
-					</li>
-					<li>You can mark a save-point, to enable/disable your save-button.</li>
-					<li>Undo/Redo non-edit related changes, like focus change, without it being marked as needs-to-be-saved.</li>
-					<li>No dependencies</li>
-					<li>Automated <a href="https://travis-ci.org/Lusito/typed-undo">unit tests</a> with 100% <a href="https://coveralls.io/github/Lusito/typed-undo">code coverage</a></li>
-					<li>Liberal license: <a href="https://github.com/Lusito/typed-undo/blob/master/LICENSE">zlib/libpng</a></li>
-					<li><a href="https://lusito.github.io/typed-undo/index.html">Fully documented</a> using TypeDoc</li>
-				</ul>
-				<a href="#installation-via-npm" id="installation-via-npm" style="color: inherit; text-decoration: none;">
-					<h3>Installation via NPM</h3>
-				</a>
-				<p><code>npm install typed-undo --save</code></p>
-				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
-					<h3>Example</h3>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">UndoManager</span><span style="color: #000000">, </span><span style="color: #001080">UndoableEdit</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;typed-undo&quot;</span><span style="color: #000000">;</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>typed-undo</title><meta name="description" content="Documentation for typed-undo"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">typed-undo</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>typed-undo</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p><img src="https://lusito.github.io/typed-undo/typed_undo.png" alt=""></p>
+<p><a href="https://www.npmjs.com/package/typed-undo"><img src="https://badgen.net/bundlephobia/minzip/typed-undo" alt="Minified + gzipped size"></a>
+<a href="https://www.npmjs.com/package/typed-undo"><img src="https://badgen.net/npm/v/typed-undo" alt="NPM version"></a>
+<a href="https://github.com/lusito/typed-undo/blob/master/LICENSE"><img src="https://badgen.net/github/license/lusito/typed-undo" alt="License"></a>
+<a href="https://github.com/lusito/typed-undo"><img src="https://badgen.net/github/stars/lusito/typed-undo" alt="Stars"></a>
+<a href="https://github.com/lusito/typed-undo"><img src="https://badgen.net/github/watchers/lusito/typed-undo" alt="Watchers"></a>
+<a href="https://travis-ci.org/Lusito/typed-undo"><img src="https://travis-ci.org/Lusito/typed-undo.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/Lusito/typed-undo"><img src="https://coveralls.io/repos/github/Lusito/typed-undo/badge.svg?branch=master" alt="Code Coverage"></a></p>
+<p>An UndoManager for TypeScript (and JavaScript). The basic idea is based on the UndoManager from Java.</p>
 
-<span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableEdit</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">private</span><span style="color: #000000"> </span><span style="color: #0000FF">readonly</span><span style="color: #000000"> </span><span style="color: #001080">oldValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">private</span><span style="color: #000000"> </span><span style="color: #001080">newValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">private</span><span style="color: #000000"> </span><span style="color: #0000FF">readonly</span><span style="color: #000000"> </span><span style="color: #795E26">applyValue</span><span style="color: #000000">: (</span><span style="color: #001080">value</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">void</span><span style="color: #000000">;</span>
+<a href="#fair-warning" id="fair-warning" style="color: inherit; text-decoration: none;">
+  <h4>Fair Warning</h4>
+</a>
+<p>With version 2, the target is now es2015, so if you want to support older browser, you&#39;ll have to ensure that this module is being transpiled to an older es version during your build-process.</p>
 
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #0000FF">constructor</span><span style="color: #000000">(</span><span style="color: #001080">oldValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">, </span><span style="color: #001080">newValue</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">, </span><span style="color: #795E26">applyValue</span><span style="color: #000000">: (</span><span style="color: #001080">value</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">void</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">super</span><span style="color: #000000">();</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">oldValue</span><span style="color: #000000"> = </span><span style="color: #001080">oldValue</span><span style="color: #000000">;</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000"> = </span><span style="color: #001080">newValue</span><span style="color: #000000">;</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">applyValue</span><span style="color: #000000"> = </span><span style="color: #001080">applyValue</span><span style="color: #000000">;</span>
-<span style="color: #000000">    }</span>
+<a href="#why-typed-undo" id="why-typed-undo" style="color: inherit; text-decoration: none;">
+  <h3>Why Typed-Undo?</h3>
+</a>
+<ul>
+<li>Easily add memory-efficient undo/redo functionality.<ul>
+<li>You can merge and replace edits, just like in the Java UndoManager.</li>
+</ul>
+</li>
+<li>You can mark a save-point, to enable/disable your save-button.</li>
+<li>Undo/Redo non-edit related changes, like focus change, without it being marked as needs-to-be-saved.</li>
+<li>No dependencies</li>
+<li>Automated <a href="https://travis-ci.org/Lusito/typed-undo">unit tests</a> with 100% <a href="https://coveralls.io/github/Lusito/typed-undo">code coverage</a></li>
+<li>Liberal license: <a href="https://github.com/Lusito/typed-undo/blob/master/LICENSE">zlib/libpng</a></li>
+<li><a href="https://lusito.github.io/typed-undo/index.html">Fully documented</a> using TypeDoc</li>
+</ul>
 
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">undo</span><span style="color: #000000">(): </span><span style="color: #267F99">void</span><span style="color: #000000"> {</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #795E26">applyValue</span><span style="color: #000000">(</span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">oldValue</span><span style="color: #000000">);</span>
-<span style="color: #000000">    }</span>
+<a href="#installation-via-npm" id="installation-via-npm" style="color: inherit; text-decoration: none;">
+  <h3>Installation via NPM</h3>
+</a>
+<p><code>npm install typed-undo --save</code></p>
 
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">redo</span><span style="color: #000000">(): </span><span style="color: #267F99">void</span><span style="color: #000000"> {</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #795E26">applyValue</span><span style="color: #000000">(</span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000">);</span>
-<span style="color: #000000">    }</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">isSignificant</span><span style="color: #000000">(): </span><span style="color: #267F99">boolean</span><span style="color: #000000"> {</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">oldValue</span><span style="color: #000000"> !== </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000">;</span>
-<span style="color: #000000">    }</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #795E26">merge</span><span style="color: #000000">(</span><span style="color: #001080">edit</span><span style="color: #000000">: </span><span style="color: #267F99">UndoableEdit</span><span style="color: #000000">): </span><span style="color: #267F99">boolean</span><span style="color: #000000"> {</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">edit</span><span style="color: #000000"> </span><span style="color: #0000FF">instanceof</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">) {</span>
-<span style="color: #000000">            </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000"> = </span><span style="color: #001080">edit</span><span style="color: #000000">.</span><span style="color: #001080">newValue</span><span style="color: #000000">;</span>
-<span style="color: #000000">            </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
-<span style="color: #000000">        }</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">;</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">manager</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoManager</span><span style="color: #000000">();</span>
-<span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">setListener</span><span style="color: #000000">(()</span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">((</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canUndo</span><span style="color: #000000">() ? </span><span style="color: #A31515">&quot;enable&quot;</span><span style="color: #000000"> : </span><span style="color: #A31515">&quot;disable&quot;</span><span style="color: #000000">) + </span><span style="color: #A31515">&quot; the undo button&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">((</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canRedo</span><span style="color: #000000">() ? </span><span style="color: #A31515">&quot;enable&quot;</span><span style="color: #000000"> : </span><span style="color: #A31515">&quot;disable&quot;</span><span style="color: #000000">) + </span><span style="color: #A31515">&quot; the redo button&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">((</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">() ? </span><span style="color: #A31515">&quot;enable&quot;</span><span style="color: #000000"> : </span><span style="color: #A31515">&quot;disable&quot;</span><span style="color: #000000">) + </span><span style="color: #A31515">&quot; the save button&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">});</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">applyValue</span><span style="color: #000000"> = (</span><span style="color: #001080">value</span><span style="color: #000000">:</span><span style="color: #267F99">string</span><span style="color: #000000">)</span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Value changed to &quot;</span><span style="color: #0000FF">${</span><span style="color: #001080">value</span><span style="color: #0000FF">}</span><span style="color: #A31515">&quot;`</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">example</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;basic&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">if</span><span style="color: #000000">(</span><span style="color: #001080">example</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;basic&quot;</span><span style="color: #000000">) {</span>
-<span style="color: #000000">    </span><span style="color: #795E26">applyValue</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// Value changed to &quot;Foo Bar&quot;</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">undo</span><span style="color: #000000">(); </span><span style="color: #008000">// Value changed to &quot;Hello World&quot;</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">redo</span><span style="color: #000000">(); </span><span style="color: #008000">// Value changed to &quot;Foo Bar&quot;</span>
-<span style="color: #000000">} </span><span style="color: #AF00DB">else</span><span style="color: #000000"> </span><span style="color: #AF00DB">if</span><span style="color: #000000">(</span><span style="color: #001080">example</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;merge&quot;</span><span style="color: #000000">) {</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canUndo</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">canUndo</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
-<span style="color: #000000">} </span><span style="color: #AF00DB">else</span><span style="color: #000000"> </span><span style="color: #AF00DB">if</span><span style="color: #000000">(</span><span style="color: #001080">example</span><span style="color: #000000"> === </span><span style="color: #A31515">&quot;modified&quot;</span><span style="color: #000000">) {</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">UndoableValueChange</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Hello World&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;Foo Bar&quot;</span><span style="color: #000000">, </span><span style="color: #001080">applyValue</span><span style="color: #000000">));</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">setUnmodified</span><span style="color: #000000">();</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">undo</span><span style="color: #000000">();</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// true</span>
-<span style="color: #000000">    </span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">redo</span><span style="color: #000000">();</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">manager</span><span style="color: #000000">.</span><span style="color: #795E26">isModified</span><span style="color: #000000">()); </span><span style="color: #008000">// false</span>
-<span style="color: #000000">}</span>
+<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+  <h3>Example</h3>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">UndoManager</span><span class="hl-1">, </span><span class="hl-2">UndoableEdit</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&quot;typed-undo&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">class</span><span class="hl-1"> </span><span class="hl-5">UndoableValueChange</span><span class="hl-1"> </span><span class="hl-4">extends</span><span class="hl-1"> </span><span class="hl-5">UndoableEdit</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">private</span><span class="hl-1"> </span><span class="hl-4">readonly</span><span class="hl-1"> </span><span class="hl-2">oldValue</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-4">private</span><span class="hl-1"> </span><span class="hl-2">newValue</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-4">private</span><span class="hl-1"> </span><span class="hl-4">readonly</span><span class="hl-1"> </span><span class="hl-6">applyValue</span><span class="hl-1">: (</span><span class="hl-2">value</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-5">void</span><span class="hl-1">;</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-4">constructor</span><span class="hl-1">(</span><span class="hl-2">oldValue</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1">, </span><span class="hl-2">newValue</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1">, </span><span class="hl-6">applyValue</span><span class="hl-1">: (</span><span class="hl-2">value</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-5">void</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-4">super</span><span class="hl-1">();</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">oldValue</span><span class="hl-1"> = </span><span class="hl-2">oldValue</span><span class="hl-1">;</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">newValue</span><span class="hl-1"> = </span><span class="hl-2">newValue</span><span class="hl-1">;</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">applyValue</span><span class="hl-1"> = </span><span class="hl-2">applyValue</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-6">undo</span><span class="hl-1">(): </span><span class="hl-5">void</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-6">applyValue</span><span class="hl-1">(</span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">oldValue</span><span class="hl-1">);</span><br/><span class="hl-1">    }</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-6">redo</span><span class="hl-1">(): </span><span class="hl-5">void</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-6">applyValue</span><span class="hl-1">(</span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">newValue</span><span class="hl-1">);</span><br/><span class="hl-1">    }</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-6">isSignificant</span><span class="hl-1">(): </span><span class="hl-5">boolean</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">return</span><span class="hl-1"> </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">oldValue</span><span class="hl-1"> !== </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">newValue</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-6">merge</span><span class="hl-1">(</span><span class="hl-2">edit</span><span class="hl-1">: </span><span class="hl-5">UndoableEdit</span><span class="hl-1">): </span><span class="hl-5">boolean</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">edit</span><span class="hl-1"> </span><span class="hl-4">instanceof</span><span class="hl-1"> </span><span class="hl-5">UndoableValueChange</span><span class="hl-1">) {</span><br/><span class="hl-1">            </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-2">newValue</span><span class="hl-1"> = </span><span class="hl-2">edit</span><span class="hl-1">.</span><span class="hl-2">newValue</span><span class="hl-1">;</span><br/><span class="hl-1">            </span><span class="hl-0">return</span><span class="hl-1"> </span><span class="hl-4">true</span><span class="hl-1">;</span><br/><span class="hl-1">        }</span><br/><span class="hl-1">        </span><span class="hl-0">return</span><span class="hl-1"> </span><span class="hl-4">false</span><span class="hl-1">;</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">manager</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">UndoManager</span><span class="hl-1">();</span><br/><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">setListener</span><span class="hl-1">(()</span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">((</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">canUndo</span><span class="hl-1">() ? </span><span class="hl-3">&quot;enable&quot;</span><span class="hl-1"> : </span><span class="hl-3">&quot;disable&quot;</span><span class="hl-1">) + </span><span class="hl-3">&quot; the undo button&quot;</span><span class="hl-1">);</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">((</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">canRedo</span><span class="hl-1">() ? </span><span class="hl-3">&quot;enable&quot;</span><span class="hl-1"> : </span><span class="hl-3">&quot;disable&quot;</span><span class="hl-1">) + </span><span class="hl-3">&quot; the redo button&quot;</span><span class="hl-1">);</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">((</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">() ? </span><span class="hl-3">&quot;enable&quot;</span><span class="hl-1"> : </span><span class="hl-3">&quot;disable&quot;</span><span class="hl-1">) + </span><span class="hl-3">&quot; the save button&quot;</span><span class="hl-1">);</span><br/><span class="hl-1">});</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-6">applyValue</span><span class="hl-1"> = (</span><span class="hl-2">value</span><span class="hl-1">:</span><span class="hl-5">string</span><span class="hl-1">)</span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">`Value changed to &quot;</span><span class="hl-4">${</span><span class="hl-2">value</span><span class="hl-4">}</span><span class="hl-3">&quot;`</span><span class="hl-1">);</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">example</span><span class="hl-1"> = </span><span class="hl-3">&quot;basic&quot;</span><span class="hl-1">;</span><br/><span class="hl-0">if</span><span class="hl-1">(</span><span class="hl-2">example</span><span class="hl-1"> === </span><span class="hl-3">&quot;basic&quot;</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-6">applyValue</span><span class="hl-1">(</span><span class="hl-3">&quot;Foo Bar&quot;</span><span class="hl-1">); </span><span class="hl-8">// Value changed to &quot;Foo Bar&quot;</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">add</span><span class="hl-1">(</span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">UndoableValueChange</span><span class="hl-1">(</span><span class="hl-3">&quot;Hello World&quot;</span><span class="hl-1">, </span><span class="hl-3">&quot;Foo Bar&quot;</span><span class="hl-1">, </span><span class="hl-2">applyValue</span><span class="hl-1">));</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">undo</span><span class="hl-1">(); </span><span class="hl-8">// Value changed to &quot;Hello World&quot;</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">redo</span><span class="hl-1">(); </span><span class="hl-8">// Value changed to &quot;Foo Bar&quot;</span><br/><span class="hl-1">} </span><span class="hl-0">else</span><span class="hl-1"> </span><span class="hl-0">if</span><span class="hl-1">(</span><span class="hl-2">example</span><span class="hl-1"> === </span><span class="hl-3">&quot;merge&quot;</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">add</span><span class="hl-1">(</span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">UndoableValueChange</span><span class="hl-1">(</span><span class="hl-3">&quot;Hello World&quot;</span><span class="hl-1">, </span><span class="hl-3">&quot;Foo Bar&quot;</span><span class="hl-1">, </span><span class="hl-2">applyValue</span><span class="hl-1">));</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">canUndo</span><span class="hl-1">()); </span><span class="hl-8">// true</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// true</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">add</span><span class="hl-1">(</span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">UndoableValueChange</span><span class="hl-1">(</span><span class="hl-3">&quot;Foo Bar&quot;</span><span class="hl-1">, </span><span class="hl-3">&quot;Hello World&quot;</span><span class="hl-1">, </span><span class="hl-2">applyValue</span><span class="hl-1">));</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">canUndo</span><span class="hl-1">()); </span><span class="hl-8">// false</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// false</span><br/><span class="hl-1">} </span><span class="hl-0">else</span><span class="hl-1"> </span><span class="hl-0">if</span><span class="hl-1">(</span><span class="hl-2">example</span><span class="hl-1"> === </span><span class="hl-3">&quot;modified&quot;</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// false</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">add</span><span class="hl-1">(</span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">UndoableValueChange</span><span class="hl-1">(</span><span class="hl-3">&quot;Hello World&quot;</span><span class="hl-1">, </span><span class="hl-3">&quot;Foo Bar&quot;</span><span class="hl-1">, </span><span class="hl-2">applyValue</span><span class="hl-1">));</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// true</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">setUnmodified</span><span class="hl-1">();</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// false</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">undo</span><span class="hl-1">();</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// true</span><br/><span class="hl-1">    </span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">redo</span><span class="hl-1">();</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">manager</span><span class="hl-1">.</span><span class="hl-6">isModified</span><span class="hl-1">()); </span><span class="hl-8">// false</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<a href="#report-isssues" id="report-isssues" style="color: inherit; text-decoration: none;">
-					<h3>Report isssues</h3>
-				</a>
-				<p>Something not working quite as expected? Do you need a feature that has not been implemented yet? Check the <a href="https://github.com/Lusito/typed-undo/issues">issue tracker</a> and add a new one if your problem is not already listed. Please try to provide a detailed description of your problem, including the steps to reproduce it.</p>
-				<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
-					<h3>Contribute</h3>
-				</a>
-				<p>Awesome! If you would like to contribute with a new feature or submit a bugfix, fork this repo and send a pull request. Please, make sure all the unit tests are passing before submitting and add new ones in case you introduced new features.</p>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h3>License</h3>
-				</a>
-				<p>Typed-Undo has been released under the <a href="https://github.com/Lusito/typed-undo/blob/master/LICENSE">zlib/libpng</a> license, meaning you
-				can use it free of charge, without strings attached in commercial and non-commercial projects. Credits are appreciated but not mandatory.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/undomanager.html">Undo<wbr>Manager</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/undoableedit.html">Undoable<wbr>Edit</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<a href="#report-isssues" id="report-isssues" style="color: inherit; text-decoration: none;">
+  <h3>Report isssues</h3>
+</a>
+<p>Something not working quite as expected? Do you need a feature that has not been implemented yet? Check the <a href="https://github.com/Lusito/typed-undo/issues">issue tracker</a> and add a new one if your problem is not already listed. Please try to provide a detailed description of your problem, including the steps to reproduce it.</p>
+
+<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
+  <h3>Contribute</h3>
+</a>
+<p>Awesome! If you would like to contribute with a new feature or submit a bugfix, fork this repo and send a pull request. Please, make sure all the unit tests are passing before submitting and add new ones in case you introduced new features.</p>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h3>License</h3>
+</a>
+<p>Typed-Undo has been released under the <a href="https://github.com/Lusito/typed-undo/blob/master/LICENSE">zlib/libpng</a> license, meaning you
+can use it free of charge, without strings attached in commercial and non-commercial projects. Credits are appreciated but not mandatory.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/UndoManager.html" class="tsd-kind-icon">Undo<wbr/>Manager</a></li><li class="tsd-kind-class"><a href="classes/UndoableEdit.html" class="tsd-kind-icon">Undoable<wbr/>Edit</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
