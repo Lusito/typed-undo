@@ -27,7 +27,7 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "doc": "rimraf docs && typedoc --out docs --exclude \"src/*.spec.ts\" src && copyfiles -a -f \"doc-assets/*\" docs",
     "lint": "npm run lint:style && npm run lint:es && npm run lint:package",
-    "lint:es": "eslint \"{src,test}/**/*.{ts,tsx}\" --ext .ts,.tsx --ignore-path .prettierignore",
+    "lint:es": "eslint \"{src,test}/**/*.{ts,tsx}\" --ext \".ts,.tsx\" --ignore-path .prettierignore",
     "lint:es:fix": "npm run lint:es -- --fix",
     "lint:fix": "npm run lint:style:fix && npm run lint:es:fix && npm run lint:package:fix",
     "lint:package": "sort-package-json --check",
