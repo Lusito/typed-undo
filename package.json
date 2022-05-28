@@ -1,6 +1,6 @@
 {
   "name": "typed-undo",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "A low memory UndoManager for TypeScript (and JavaScript)",
   "keywords": [
     "TypeScript",
@@ -38,18 +38,18 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@lusito/eslint-config": "^1.7.0",
-    "@lusito/prettier-config": "^1.7.0",
-    "@lusito/stylelint-config": "^1.6.0",
-    "@types/jest": "^27.0.1",
+    "@lusito/eslint-config": "^2.0.0",
+    "@lusito/prettier-config": "^2.0.0",
+    "@lusito/stylelint-config": "^2.0.0",
+    "@types/jest": "^27.5.1",
     "copyfiles": "^2.4.1",
     "coveralls": "^3.1.1",
-    "eslint-plugin-jest": "^24.4.0",
-    "jest": "^27.1.1",
+    "eslint-plugin-jest": "^26.3.0",
+    "jest": "^28.1.0",
     "rimraf": "^3.0.2",
-    "sort-package-json": "^1.51.0",
-    "ts-jest": "^27.0.5",
-    "typedoc": "^0.22.3",
-    "typescript": "^4.4.3"
+    "sort-package-json": "^1.57.0",
+    "ts-jest": "^28.0.3",
+    "typedoc": "^0.22.15",
+    "typescript": "^4.6.4"
   }
 }
