@@ -11,6 +11,7 @@
 An UndoManager for TypeScript (and JavaScript). The basic idea is based on the UndoManager from Java.
 
 #### Fair Warning
+
 With version 2, the target is now es2015, so if you want to support older browser, you'll have to ensure that this module is being transpiled to an older es version during your build-process.
 
 ### Why Typed-Undo?
@@ -26,7 +27,7 @@ With version 2, the target is now es2015, so if you want to support older browse
 
 ### Installation via NPM
 
-```npm install typed-undo --save```
+`npm install typed-undo --save`
 
 ### Example
 
@@ -34,68 +35,68 @@ With version 2, the target is now es2015, so if you want to support older browse
 import { UndoManager, UndoableEdit } from "typed-undo";
 
 class UndoableValueChange extends UndoableEdit {
-    private readonly oldValue: string;
-    private newValue: string;
-    private readonly applyValue: (value: string) => void;
+  private readonly oldValue: string;
+  private newValue: string;
+  private readonly applyValue: (value: string) => void;
 
-    public constructor(oldValue: string, newValue: string, applyValue: (value: string) => void) {
-        super();
-        this.oldValue = oldValue;
-        this.newValue = newValue;
-        this.applyValue = applyValue;
-    }
+  public constructor(oldValue: string, newValue: string, applyValue: (value: string) => void) {
+    super();
+    this.oldValue = oldValue;
+    this.newValue = newValue;
+    this.applyValue = applyValue;
+  }
 
-    public undo(): void {
-        this.applyValue(this.oldValue);
-    }
+  public undo(): void {
+    this.applyValue(this.oldValue);
+  }
 
-    public redo(): void {
-        this.applyValue(this.newValue);
-    }
+  public redo(): void {
+    this.applyValue(this.newValue);
+  }
 
-    public isSignificant(): boolean {
-        return this.oldValue !== this.newValue;
-    }
+  public isSignificant(): boolean {
+    return this.oldValue !== this.newValue;
+  }
 
-    public merge(edit: UndoableEdit): boolean {
-        if (edit instanceof UndoableValueChange) {
-            this.newValue = edit.newValue;
-            return true;
-        }
-        return false;
+  public merge(edit: UndoableEdit): boolean {
+    if (edit instanceof UndoableValueChange) {
+      this.newValue = edit.newValue;
+      return true;
     }
+    return false;
+  }
 }
 
 const manager = new UndoManager();
-manager.setListener(()=> {
-    console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
-    console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
-    console.log((manager.isModified() ? "enable" : "disable") + " the save button");
+manager.setListener(() => {
+  console.log((manager.canUndo() ? "enable" : "disable") + " the undo button");
+  console.log((manager.canRedo() ? "enable" : "disable") + " the redo button");
+  console.log((manager.isModified() ? "enable" : "disable") + " the save button");
 });
-const applyValue = (value:string)=> console.log(`Value changed to "${value}"`);
+const applyValue = (value: string) => console.log(`Value changed to "${value}"`);
 const example = "basic";
-if(example === "basic") {
-    applyValue("Foo Bar"); // Value changed to "Foo Bar"
-    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-    manager.undo(); // Value changed to "Hello World"
-    manager.redo(); // Value changed to "Foo Bar"
-} else if(example === "merge") {
-    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-    console.log(manager.canUndo()); // true
-    console.log(manager.isModified()); // true
-    manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
-    console.log(manager.canUndo()); // false
-    console.log(manager.isModified()); // false
-} else if(example === "modified") {
-    console.log(manager.isModified()); // false
-    manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
-    console.log(manager.isModified()); // true
-    manager.setUnmodified();
-    console.log(manager.isModified()); // false
-    manager.undo();
-    console.log(manager.isModified()); // true
-    manager.redo();
-    console.log(manager.isModified()); // false
+if (example === "basic") {
+  applyValue("Foo Bar"); // Value changed to "Foo Bar"
+  manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+  manager.undo(); // Value changed to "Hello World"
+  manager.redo(); // Value changed to "Foo Bar"
+} else if (example === "merge") {
+  manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+  console.log(manager.canUndo()); // true
+  console.log(manager.isModified()); // true
+  manager.add(new UndoableValueChange("Foo Bar", "Hello World", applyValue));
+  console.log(manager.canUndo()); // false
+  console.log(manager.isModified()); // false
+} else if (example === "modified") {
+  console.log(manager.isModified()); // false
+  manager.add(new UndoableValueChange("Hello World", "Foo Bar", applyValue));
+  console.log(manager.isModified()); // true
+  manager.setUnmodified();
+  console.log(manager.isModified()); // false
+  manager.undo();
+  console.log(manager.isModified()); // true
+  manager.redo();
+  console.log(manager.isModified()); // false
 }
 ```
 
